@@ -1,0 +1,63 @@
+/* The visible deck explains the flow before the visitor chooses a reading. */
+select.reading-style {
+  font-family:"Cinzel",Georgia,serif;font-size:16px;font-weight:600;
+  line-height:1.5;letter-spacing:.045em;text-transform:uppercase;
+  text-overflow:ellipsis;min-width:0;
+}
+select.reading-style option{font:inherit;text-transform:uppercase}
+.deck-choice {transition:transform .25s,opacity .35s,filter .4s,box-shadow .35s,border-color .35s}
+.deck-choices[data-state="waiting"] .deck-choice {
+  opacity:.43;filter:grayscale(1);border-color:rgba(217,211,232,.35);
+  box-shadow:0 5px 12px rgba(0,0,0,.2);cursor:default;
+}
+.deck-choices[data-state="ready"] .deck-choice {
+  animation:deckAwaken .6s ease-out both;
+  animation-delay:calc(var(--card-index,0)*35ms);
+}
+.deck-choices[data-state="ready"] .deck-choice,
+.deck-choices[data-state="drawing"] .deck-choice:not(:disabled) {
+  border-color:#c6b5ed;box-shadow:0 6px 18px rgba(0,0,0,.35),0 0 14px rgba(166,136,239,.3);
+}
+.deck-choices[data-state="complete"] .deck-choice:not(.is-chosen){opacity:.5;filter:grayscale(.65)}
+.draw-row button:disabled{opacity:.48;cursor:default}
+@keyframes deckAwaken {
+  from{opacity:.43;filter:grayscale(1);transform:translateY(4px)}
+  to{opacity:1;filter:grayscale(0);transform:translateY(0)}
+}
+@media(prefers-reduced-motion:reduce){.deck-choices .deck-choice{animation:none;transition:none}}
+/* v28 swappable deck: assets/deck/back.webp replaces the patterned back. */
+.deck-choices.has-deck-back .deck-back{background:var(--deck-back-image) center/cover no-repeat;border-color:transparent}
+.deck-choices.has-deck-back .deck-back>span{display:none}
+.tarot-art.is-deck-file::after{display:none}
+/* v28 interpretation actions: email first, optional card image download. */
+.interpret-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.interpret-actions [hidden]{display:none}
+.interpret-download{display:inline-block;padding:11px 18px;border:1px solid #d7b9f7;border-radius:999px;color:#ead3ff;text-decoration:none;font-weight:600}
+.interpret-download:hover,.interpret-download:focus-visible{background:#d7b9f71f}
+.contact-grid .contact a{overflow-wrap:anywhere}
+/* Custom deck art is 600x1050 (4:7). Cards showing a deck file take that ratio. */
+.illustrated-card:has(.is-deck-file){height:auto;aspect-ratio:4/7}
+.tarot-art.is-loading{background-image:none}
+/* v29 direct send form inside the interpretation dialog. */
+.send-reading{margin:18px 0 6px;padding:16px;border:1px solid #b899e855;border-radius:16px;background:#ffffff08}
+.send-reading[hidden]{display:none}
+.send-reading h3{margin:0 0 4px;color:var(--gold);font-size:.86rem;letter-spacing:.14em;text-transform:uppercase}
+.send-reading .send-intro{margin:0 0 10px;font-size:.88rem;color:#d9c9ea}
+.send-reading .field{display:grid;gap:4px;margin-bottom:10px}
+.send-reading label{font-size:.85rem;color:#efe4ff}
+.send-reading .optional{color:#b9a8cc;font-size:.8rem}
+.send-reading input[type=text],.send-reading input[type=email],.send-reading textarea{box-sizing:border-box;width:100%;min-height:44px;padding:10px 12px;border:1px solid #b899e877;border-radius:10px;background:#0d0818;color:#f7efff;font:inherit;font-size:16px}
+.send-reading textarea{min-height:76px;resize:vertical}
+.send-reading input:focus-visible,.send-reading textarea:focus-visible{outline:2px solid #efcdff;outline-offset:2px}
+.send-reading [aria-invalid="true"]{border-color:#ff8f9e}
+.field-error{margin:0;color:#ffb3bd;font-size:.82rem}
+.field-error[hidden]{display:none}
+.hp-field{position:absolute!important;left:-10000px;width:1px;height:1px;overflow:hidden}
+.interpret-send{min-height:44px;padding:11px 22px;border:0;border-radius:999px;background:var(--gold);color:#21112f;font-weight:700;cursor:pointer}
+.interpret-send:disabled{opacity:.6;cursor:progress}
+.send-status{margin:10px 0 0;font-size:.9rem;min-height:1em}
+.send-status[data-kind="success"]{color:#b8f5c8}
+.send-status[data-kind="error"]{color:#ffb3bd}
+.send-status[data-kind="info"]{color:#d9c9ea}
+.send-status a{color:#ead3ff}
+.interpret-or{margin:12px 0 6px;font-size:.88rem;color:#c6b5d5}

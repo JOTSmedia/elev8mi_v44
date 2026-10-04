@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: https://ogp.me/ns#">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#05030c">
+<meta name="description" content="Explore tarot with Allison at ELEV8MI. Draw from a 78-card deck, reflect on your reading, and request a personal interpretation.">
+<title>ELEV8MI v38 | Tarot Readings with Allison</title>
+<link rel="canonical" href="https://www.elev8mi.com/">
+<link rel="icon" href="favicon.ico?v=38" sizes="16x16 32x32 48x48" type="image/x-icon">
+<link rel="icon" href="favicon-32x32.png?v=38" sizes="32x32" type="image/png">
+<link rel="icon" href="favicon-16x16.png?v=38" sizes="16x16" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=38" sizes="180x180">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ELEV8MI">
+<meta property="og:title" content="ELEV8MI | Tarot Readings with Allison">
+<meta property="og:description" content="Explore tarot with Allison at ELEV8MI. Draw from a 78-card deck, reflect on your reading, and request a personal interpretation.">
+<meta property="og:url" content="https://www.elev8mi.com/">
+<meta property="og:image" content="https://www.elev8mi.com/og-image.jpg?v=38">
+<meta property="og:image:secure_url" content="https://www.elev8mi.com/og-image.jpg?v=38">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The ELEV8MI angel-wing logo at the centre of its solar system, above Earth under the night sky">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ELEV8MI | Tarot Readings with Allison">
+<meta name="twitter:description" content="Explore tarot with Allison at ELEV8MI. Draw your cards and request a personal interpretation.">
+<meta name="twitter:image" content="https://www.elev8mi.com/og-image.jpg?v=38">
+<meta name="twitter:image:alt" content="The ELEV8MI angel-wing logo at the centre of its solar system, above Earth under the night sky">
+<link rel="preload" as="image" href="assets/orbit.webp?v=38" media="(min-width: 721px)" fetchpriority="high">
+<link rel="preload" as="image" href="assets/orbit.webp?v=38" media="(max-width: 720px)" fetchpriority="high">
+<link rel="stylesheet" href="fonts.css?v=38">
+<link rel="stylesheet" href="base.css?v=38">
+<link rel="stylesheet" href="journey.css?v=38">
+<link rel="stylesheet" href="living-world.css?v=38">
+<link rel="stylesheet" href="atmosphere.css?v=38">
+<link rel="stylesheet" href="planet-lighting.css?v=38">
+<link rel="stylesheet" href="responsive-polish.css?v=38">
+<link rel="stylesheet" href="nav-glass.css?v=38">
+<link rel="stylesheet" href="audio-loader.css?v=38">
+<link rel="stylesheet" href="draw-polish.css?v=38">
+<link rel="stylesheet" href="booking.css?v=38">
+<link rel="stylesheet" href="polish.css?v=38">
+<link rel="stylesheet" href="fallback-sky.css?v=38">
+<link rel="stylesheet" href="constellations-ui.css?v=38">
+<noscript><style>
+html{scroll-behavior:auto}
+body.locked{overflow:auto}
+*,*::before,*::after{animation:none!important;transition:none!important}
+header,.reveal,#heroLogo{opacity:1!important;visibility:visible!important;transform:none}
+#loader,#replay,.tuner-slot,.moon-now,.planet-detail,#orbitPaths,.journey-caption,#readingHelp,#reading .reading-steps,#reading .tarot-panel{display:none}
+@media(max-width:800px){
+ header .header-content{display:flex;flex-wrap:wrap;justify-content:center;gap:.25rem .75rem;padding:.45rem .65rem;border-radius:18px}
+ header .brand{margin:0 auto}
+ header nav{display:flex;position:static;width:100%;flex-direction:row;flex-wrap:wrap;justify-content:center;gap:0;padding:0;border:0;box-shadow:none;background:none;max-height:none;overflow:visible}
+ header nav a{font-size:.66rem;letter-spacing:.05em;padding:.4rem .35rem;border:0}
+ #menuToggle{display:none}
+ section{scroll-margin-top:120px}
+ .hero{padding-top:120px}
+}
+</style></noscript>
+<link rel="stylesheet" href="v36.css?v=38">
+</head>
+<body class="locked">
+<div id="journey" aria-hidden="true">
+  <div class="journey-world" id="journeyWorld">
+    <picture class="journey-plate">
+      <source media="(max-width: 720px)" srcset="assets/orbit.webp?v=38">
+      <img src="assets/orbit.webp?v=38" alt="" width="941" height="1672" fetchpriority="high" decoding="async">
+    </picture>
+    <picture class="journey-plate">
+      <source media="(orientation: landscape)" srcset="assets/surface-wide-v25.webp?v=38">
+      <img src="assets/surface.webp?v=38" loading="lazy" alt="" width="941" height="1672" fetchpriority="low" decoding="async">
+    </picture>
+    <picture class="journey-plate">
+      <source media="(orientation: landscape)" srcset="assets/subterranean-wide-v25.webp?v=38">
+      <img src="assets/subterranean.webp?v=38" loading="lazy" alt="" width="940" height="1672" fetchpriority="low" decoding="async">
+    </picture>
+  </div>
+  <div id="horizonSun" aria-hidden="true"></div>
+<div class="day-sky" aria-hidden="true"></div><div class="night-sky" aria-hidden="true"></div><div class="twilight-sky" aria-hidden="true"></div>
+  <div class="world-weather" aria-hidden="true">
+    <div class="mist-stream mist-stream-one"></div>
+    <div class="mist-stream mist-stream-two"></div>
+    <div class="light-shaft"></div>
+  </div>
+  <canvas id="worldEffects" aria-hidden="true"></canvas>
+  <div class="journey-shade"></div>
+</div>
+<div class="journey-caption" aria-hidden="true">
+  <span class="journey-rule"><i id="journeyProgress"></i></span>
+  <span id="journeyStage">01 / Space</span>
+</div>
+<div id="loader" aria-label="Preparing your reading">
+  <div class="load-emblem">
+    <svg class="load-progress-ring" viewBox="0 0 120 120" aria-hidden="true"><circle class="load-ring-track" cx="60" cy="60" r="57"/><circle id="loadRingProgress" cx="60" cy="60" r="57" pathLength="100"/></svg>
+    <div class="load-mark">
+    <div id="logoGlow" aria-hidden="true"></div>
+    <img id="flyLogo" src="elev8mi-logo.webp" alt="" width="640" height="620" decoding="async">
+    </div>
+    <div class="load-kicker">Allison</div>
+  </div>
+  <div class="load-ui" id="loadUi">
+    <div class="pct" id="pct">0%</div>
+    <div class="status" id="status">Entering the glade</div>
+    <div class="veil" id="loadProgress" role="progressbar" aria-label="Preparing your reading" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="veil-track"><div class="veil-fill" id="fill"></div></div></div>
+  </div>
+</div>
+
+<header>
+  <div class="header-content">
+    <svg class="nav-trails" aria-hidden="true" focusable="false" preserveAspectRatio="none">
+      <defs><linearGradient id="navTraceSpectrum" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#bf9cff"/><stop offset="28%" stop-color="#a9d5ff"/><stop offset="52%" stop-color="#ffffff"/><stop offset="78%" stop-color="#afdfff"/><stop offset="100%" stop-color="#c8adff"/></linearGradient></defs>
+      <path id="navTrailTop" class="nav-trail nav-trail-top"/>
+      <path id="navTrailBottom" class="nav-trail nav-trail-bottom"/>
+    </svg>
+    <a class="brand" href="#top" id="brandSlot" aria-label="ELEV8MI home">
+      <img class="nav-wordmark-image" src="elev8mi-wordmark.webp" alt="ELEV8MI" width="640" height="142" decoding="async">
+    </a>
+    <div class="tuner-slot">
+      <div class="tuner" id="tuner">
+      <span class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span class="hz">528 Hz</span>
+      <div class="sound-picker" id="soundPicker">
+        <button type="button" id="soundMenuButton" class="sound-menu-button" aria-haspopup="menu" aria-expanded="false" aria-controls="soundMenu" aria-label="Sound: Tone. Choose a 528 Hz sound"><span id="soundMenuLabel">Tone</span><span class="sound-caret" aria-hidden="true"></span></button>
+        <ul id="soundMenu" class="sound-menu" role="menu" aria-label="528 Hz sound" hidden></ul>
+      </div>
+      <button type="button" id="toneBtn" aria-pressed="false" aria-label="Play 528 Hz"><span class="mark"></span></button>
+    </div>
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+    <nav id="nav">
+      <a href="#about">The Work</a>
+      <a href="#services">Sessions</a>
+      <a href="#portfolio">Notes</a>
+      <a href="#reading">Tap into your energy</a>
+      <a href="#contact">Book</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero reveal">
+    <div class="solar-system" id="solarSystem" aria-label="The ELEV8MI solar system">
+      <canvas id="orbitPaths" aria-hidden="true"></canvas>
+      <div class="hero-sigil"><span class="hero-glow" aria-hidden="true"></span><img id="heroLogo" src="elev8mi-logo.webp" alt="ELEV8MI — the center of our solar system" width="640" height="620" decoding="async" fetchpriority="high"></div>
+      <div id="solarBodies" class="solar-bodies"></div>
+      <div class="planet-detail" id="planetDetail" aria-live="polite"></div>
+      <div class="moon-now"><canvas id="liveMoon" width="168" height="168" aria-hidden="true"></canvas><div><span class="moon-kicker">The Moon tonight</span><strong id="moonPhaseName">Calculating phase…</strong><span id="moonPhaseInfo"></span></div></div>
+    </div>
+    <div class="hero-copy">
+      <h1>Cards for the <span class="one-line">in-between</span></h1>
+      <p class="tag">When the old life has loosened and the new one is not yet dry.</p>
+      <p class="lede">Allison reads tarot as a map of change — what you are leaving, what is still in the dark, and what is ready for air. Explore your reading at your own pace, then ask Allison for a personal interpretation. Optional 528 Hz audio accompanies the experience.</p>
+      <div class="cta-row">
+        <a class="btn solid" href="#reading">Tap into your energy</a>
+        <a class="btn" href="#contact">Book a reading</a>
+      </div>
+    </div>
+    <p class="scroll-invitation">From the stars to the roots<span aria-hidden="true">↓</span></p>
+  </section>
+
+  <section id="about" class="reveal">
+    <h2 class="section-title">The work</h2>
+    <p class="section-sub">How Allison reads</p>
+    <div class="about-text">
+      <p>A reading here is not a fortune taped to the wall. It is a look at the stage you are actually in — appetite, stillness, or first flight — and a clean name for what comes next.</p>
+      <p>Sit with Allison in the room, or call in from wherever you are. Ask about available sessions and choose a format that suits you.</p>
+      <p>Come when the old story is finished talking. Bring the question you have been walking around.</p>
+    </div>
+  </section>
+
+  <section id="services" class="reveal">
+    <h2 class="section-title">Ways to sit</h2>
+    <p class="section-sub">In the room and across the wire</p>
+    <div class="grid stages">
+      <article class="card">
+        <div class="sigil">●</div>
+        <h3>In person</h3>
+        <p>A private table. The question spoken out loud. Time enough for the cards to finish their sentence.</p>
+      </article>
+      <article class="card">
+        <div class="sigil">◐</div>
+        <h3>Distance</h3>
+        <p>The same depth, no travel. Camera or voice. Notes sent after so the reading does not evaporate.</p>
+      </article>
+      <article class="card">
+        <div class="sigil">◉</div>
+        <h3>A moment to reflect</h3>
+        <p>Draw a card here whenever you need a pause. Choose a focus and consider what the card brings to mind.</p>
+      </article>
+      <article class="card">
+        <div class="sigil" aria-hidden="true"><svg viewBox="0 0 48 48" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M24 18c-7-15-23-12-19 2 2 7 12 8 18 5-13 0-17 8-11 12 5 3 10-3 12-10 2 7 7 13 12 10 6-4 2-12-11-12 6 3 16 2 18-5 4-14-12-17-19-2Z"/><path d="M24 17v16m0-16-4-6m4 6 4-6"/></svg></div>
+        <h3>Personal interpretation</h3>
+        <p>Send Allison the cards you drew, together with your reading style, to ask for a personal interpretation.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="portfolio" class="reveal">
+    <h2 class="section-title">From the table</h2>
+    <p class="section-sub">Carry a little clarity with you</p>
+    <div class="split">
+      <article class="card">
+        <h3>Notice what resonates</h3>
+        <p>Which image or phrase draws your attention? Use it as a starting point for your own reflection.</p>
+      </article>
+      <article class="card">
+        <h3>Keep your reading</h3>
+        <p>Copy your cards and their meanings, or open an email draft to ask Allison to interpret your spread.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="reading" class="reveal">
+    <h2 class="section-title">Your card reading</h2>
+    <p class="section-sub">A moment to pause, ask, and reflect.</p>
+    <noscript><p>Enable JavaScript to choose cards and request an interpretation here. You can also <a href="mailto:elev8miangel@gmail.com?subject=ELEV8MI%20READING%20ENQUIRY">email Allison about a reading</a>.</p></noscript>
+    <ol class="reading-steps"><li><b>1. Set an intention</b><span>Choose a reading style to bring the waiting cards to life.</span></li><li><b>2. Choose your spread</b><span>One card for a focus. Three for past, present, and what may unfold.</span></li><li><b>3. Draw &amp; reflect</b><span>Pick your face-down cards, read their meanings, and ask Allison to interpret them.</span></li></ol>
+    <button type="button" id="readingHelp" class="reading-help">How does this work?</button>
+    <div class="tarot-panel">
+      <label for="question" class="question-label">What kind of reading would you like?</label>
+      <select id="question" class="ask reading-style">
+        <option value="" selected disabled>CHOOSE YOUR READING</option>
+        <option value="General guidance">GENERAL GUIDANCE</option>
+        <option value="Love &amp; relationships">LOVE &amp; RELATIONSHIPS</option>
+        <option value="Career &amp; purpose">CAREER &amp; PURPOSE</option>
+        <option value="Money &amp; opportunities">MONEY &amp; OPPORTUNITIES</option>
+        <option value="Personal growth">PERSONAL GROWTH</option>
+        <option value="A decision or crossroads">DECISIONS &amp; CROSSROADS</option>
+        <option value="Clarity on a situation">CLARITY ON A SITUATION</option>
+        <option value="The week ahead">THE WEEK AHEAD</option>
+        <option value="Letting go &amp; moving forward">LETTING GO &amp; MOVING FORWARD</option>
+      </select>
+      <div class="spread-row" id="spreadRow">
+        <button type="button" class="on" aria-pressed="true" data-spread="one">One card</button>
+        <button type="button" aria-pressed="false" data-spread="three">Three cards</button>
+      </div>
+      <div class="draw-row"><button type="button" id="drawBtn" disabled>Shuffle again</button></div>
+      <p class="deck-note" id="pickHint" role="status" aria-live="polite">Choose a reading style above to bring the waiting cards to life.</p>
+      <div id="deckChoices" class="deck-choices" role="group" aria-label="Face-down tarot deck" aria-describedby="pickHint" data-state="waiting"></div>
+      <div class="spread" id="spread"></div>
+      <div class="meanings" id="meanings"></div>
+      <p class="synthesis" id="synthesis"></p>
+      <div class="copy-row"><button type="button" id="interpretReading" hidden>Ask Allison to interpret</button><button type="button" id="copyReading" hidden>Copy this reading</button></div>
+    </div>
+  </section>
+
+  <section id="book" class="reveal">
+    <h2 class="section-title">Book a personalized reading</h2>
+    <p class="booking-intro">Allison personally pulls and reads the cards for every booking. This is not a random card generator, and she replies with your reading by email.</p>
+    <form id="bookingForm" class="send-reading booking-form" novalidate aria-labelledby="bookingFormTitle">
+      <h3 id="bookingFormTitle">Request your reading</h3>
+      <div class="field"><label for="bookName">Your name</label><input id="bookName" name="name" type="text" autocomplete="name" required maxlength="120" aria-describedby="bookNameError"><p class="field-error" id="bookNameError" hidden></p></div>
+      <div class="field"><label for="bookEmail">Your email</label><input id="bookEmail" name="email" type="email" autocomplete="email" required maxlength="200" aria-describedby="bookEmailError"><p class="field-error" id="bookEmailError" hidden></p></div>
+      <div class="field"><label for="bookQuestion">Your question</label><textarea id="bookQuestion" name="question" rows="3" required maxlength="2000" aria-describedby="bookQuestionError"></textarea><p class="field-error" id="bookQuestionError" hidden></p></div>
+      <fieldset class="booking-choices" aria-describedby="bookReadingError">
+        <legend>Choose your reading</legend>
+        <label class="booking-option"><input type="radio" name="reading" value="one-card" required><span class="option-name">One Card Pull</span><span class="option-price">$11.11</span></label>
+        <label class="booking-option"><input type="radio" name="reading" value="five-card"><span class="option-name">5 Card Story</span><span class="option-price">$22.22</span><span class="option-detail">Up to 5 cards; the story includes an expansion of card 1 based on your question.</span></label>
+        <p class="field-error" id="bookReadingError" hidden></p>
+      </fieldset>
+      <div class="hp-field" aria-hidden="true"><label for="bookBotcheck">Leave this empty</label><input id="bookBotcheck" name="botcheck" type="checkbox" tabindex="-1" autocomplete="off"></div>
+      <button type="submit" id="bookSubmit" class="interpret-send">Book my reading</button>
+      <p class="send-status" id="bookStatus" role="status" aria-live="polite"></p>
+    </form>
+  </section>
+
+  <section id="contact" class="reveal">
+    <h2 class="section-title">Find Allison</h2>
+    <p class="section-sub">Ask about a session or your card interpretation</p>
+    <div class="contact-grid">
+      <div class="contact"><h3>Email</h3><p class="contact-icon"><a class="social-icon" href="mailto:elev8miangel@gmail.com?subject=ELEV8MI%20READING%20ENQUIRY" aria-label="Email Allison at elev8miangel@gmail.com"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#icon-mail"/></svg></a></p></div>
+      <div class="contact"><h3>Instagram</h3><p class="contact-icon"><a class="social-icon" href="https://www.instagram.com/elev8mi/" target="_blank" rel="noopener" aria-label="Instagram @elev8mi (opens in a new tab)"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#icon-instagram"/></svg></a></p></div>
+      <div class="contact"><h3>Website</h3><p class="contact-icon"><a class="social-icon" href="https://www.elev8mi.com/" aria-label="Website www.elev8mi.com"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#icon-globe"/></svg></a></p></div>
+      <div class="contact"><h3>Phone</h3><p>Shared when you book</p></div>
+      <div class="contact"><h3>Where</h3><p>In person by appointment · distance by video or voice</p></div>
+    </div>
+  </section>
+</main>
+<dialog id="readingGuide" aria-labelledby="readingGuideTitle"><button type="button" id="closeReadingGuide" aria-label="Close instructions">×</button><h2 id="readingGuideTitle">A little guidance before you draw</h2><p>The face-down cards are waiting for you. Choose a reading style from the dropdown to light up the shuffled deck: general guidance, relationships, career, personal growth, or another focus.</p><p><b>One card</b> gives you a single theme. <b>Three cards</b> offer three perspectives: past, present, and what may unfold. You can change your style and spread, or shuffle again, before your first pick.</p><p>Choose your cards from the lit deck. Each selected card appears in your reading. When your spread is complete, you can read the meanings and open an email draft for Allison’s interpretation.</p><p>A reversed card is another angle on the theme, not a bad omen. Use the reading as a prompt for reflection, rather than a guaranteed prediction.</p><button type="button" id="beginReading">I’m ready to draw</button></dialog>
+
+<dialog id="interpretDialog" aria-labelledby="interpretTitle" aria-describedby="interpretDescription">
+ <button type="button" id="closeInterpret" aria-label="Close interpretation request">×</button>
+ <h2 id="interpretTitle">Let Allison interpret your cards</h2>
+ <p id="interpretDescription">Your spread is ready. Contact Allison for a personal interpretation: open an email draft to elev8miangel@gmail.com with your selected cards already included.</p>
+ <ul id="interpretCards"></ul>
+ <label for="interpretMessage">Your message</label>
+ <textarea id="interpretMessage" rows="9" readonly></textarea>
+ <form id="sendReading" class="send-reading" novalidate aria-labelledby="sendReadingTitle">
+  <h3 id="sendReadingTitle">Send your reading to Allison</h3>
+  <p class="send-intro">Send it straight from here. Your cards, positions and card image links are included.</p>
+  <div class="field"><label for="sendName">Your name</label><input id="sendName" name="name" type="text" autocomplete="name" required maxlength="120" aria-describedby="sendNameError"><p class="field-error" id="sendNameError" hidden></p></div>
+  <div class="field"><label for="sendEmail">Your email</label><input id="sendEmail" name="email" type="email" autocomplete="email" required maxlength="200" aria-describedby="sendEmailError"><p class="field-error" id="sendEmailError" hidden></p></div>
+  <div class="field"><label for="sendQuestion">Your question or message <span class="optional">(optional)</span></label><textarea id="sendQuestion" name="question" rows="3" maxlength="2000"></textarea></div>
+  <div class="hp-field" aria-hidden="true"><label for="sendBotcheck">Leave this empty</label><input id="sendBotcheck" name="botcheck" type="checkbox" tabindex="-1" autocomplete="off"></div>
+  <button type="submit" id="sendReadingSubmit" class="interpret-send">Send to Allison</button>
+  <p class="send-status" id="sendStatus" role="status" aria-live="polite"></p>
+ </form>
+ <p class="interpret-or">Or use your own email app:</p>
+ <div class="interpret-actions"><a id="interpretEmail" class="interpret-email">Email Allison</a><a id="downloadCards" class="interpret-download" hidden>Download my cards</a></div>
+ <p class="interpret-note">Opens your email app. Review the draft and send it when you’re ready. To include your card images, download them first and attach the image to your email.</p>
+ <button type="button" id="continueReading">Return to my reading</button>
+</dialog>
+<footer>
+  <p class="footer-line">© 2026 Allison</p>
+  <p class="footer-line">Tarot Readings</p>
+  <p class="footer-line">All rights reserved</p>
+  <ul class="social-links footer-line" aria-label="Contact Allison">
+    <li><a class="social-icon" href="mailto:elev8miangel@gmail.com?subject=ELEV8MI%20READING%20ENQUIRY" aria-label="Email Allison at elev8miangel@gmail.com"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#icon-mail"/></svg></a></li>
+    <li><a class="social-icon" href="https://www.instagram.com/elev8mi/" target="_blank" rel="noopener" aria-label="Instagram @elev8mi (opens in a new tab)"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#icon-instagram"/></svg></a></li>
+    <li><a class="social-icon" href="https://www.elev8mi.com/" aria-label="Website www.elev8mi.com"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><use href="#icon-globe"/></svg></a></li>
+  </ul>
+  <p class="footer-line">A card, a moment, a next step</p>
+  
+  <p class="footer-line"><button type="button" id="replay">Replay entrance</button></p>
+</footer>
+<svg class="icon-sprite" aria-hidden="true" focusable="false" width="0" height="0" style="position:absolute;width:0;height:0;overflow:hidden">
+  <!-- Instagram: Simple Icons (CC0). Mail and globe: Lucide (ISC). See assets/LICENSES.md. -->
+  <symbol id="icon-instagram" viewBox="0 0 24 24"><path fill="currentColor" d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></symbol>
+  <symbol id="icon-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></g></symbol>
+  <symbol id="icon-globe" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></g></symbol>
+</svg>
+
+<script>
+window.elev8miBootSafety=setTimeout(()=>{
+  if(document.body.classList.contains('live'))return;
+  document.body.classList.remove('locked');document.body.classList.add('live');document.body.removeAttribute('aria-busy');
+  ['header','main','footer'].forEach(selector=>{const el=document.querySelector(selector);if(el)el.inert=false;});
+  const loader=document.getElementById('loader');loader?.classList.add('done');loader?.setAttribute('aria-hidden','true');
+  document.querySelector('header')?.classList.add('ready');
+  const hero=document.getElementById('heroLogo');if(hero){hero.style.opacity='1';hero.style.visibility='visible';}
+},50000);
+</script>
+<script src="entrance.js?v=38" defer></script>
+<script src="boot.js?v=38" defer></script>
+</body>
+</html>

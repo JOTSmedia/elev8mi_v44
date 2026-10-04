@@ -1,0 +1,89 @@
+/* Final responsive and keyboard polish; scene rendering remains independent. */
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{
+  outline:2px solid #c2d9ff;
+  outline-offset:4px;
+}
+select.reading-style{min-height:48px}
+#readingGuide{
+  box-sizing:border-box;
+  max-height:calc(100dvh - 32px);
+  overflow:auto;
+  overscroll-behavior:contain;
+}
+#interpretDialog{overscroll-behavior:contain}
+#readingGuide p,#interpretDialog p,#interpretCards{overflow-wrap:anywhere}
+#closeReadingGuide,#closeInterpret{
+  width:44px;
+  height:44px;
+  display:grid;
+  place-items:center;
+  right:8px;
+  top:4px;
+  line-height:1;
+}
+#readingGuide h2,#interpretDialog h2{padding-right:32px}
+.menu-toggle{min-width:44px;min-height:44px;border-radius:14px;align-items:center;justify-content:center}
+.copy-row{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+@media(max-width:720px){
+  nav{max-height:calc(100dvh - 88px);overflow-y:auto;overscroll-behavior:contain;border-radius:22px;clip-path:inset(0 round 22px)}
+  .header-content{grid-template-columns:auto minmax(0,1fr) auto}
+  .tuner{flex-shrink:0}
+  #readingGuide,#interpretDialog{padding:26px 20px}
+  .reading-help,.spread-row button,.draw-row button,.copy-row button{min-height:44px}
+}
+@media(max-width:420px){
+  .tuner .wave{display:none}
+  .tuner{gap:.3rem;padding-inline:.35rem}
+  .tuner .hz{font-size:.58rem;letter-spacing:.06em}
+  .nav-wordmark-image{width:138px}
+}
+@media(max-width:350px){
+  .nav-wordmark-image{width:112px}
+  .header-content{gap:.35rem;padding-inline:.5rem}
+}
+@media(max-height:500px){
+  #readingGuide,#interpretDialog{max-height:calc(100dvh - 20px);padding:22px 20px}
+}
+@media(max-width:480px){
+  .grid.stages{grid-template-columns:minmax(0,1fr)}
+}
+/* Keep the emblem, near-side Moon and Earth distinct on short phones. */
+@media(orientation:landscape) and (max-height:500px){
+  .hero{padding-top:92px}
+  body.live .hero.reveal{animation:none;opacity:1;transform:none}
+  .solar-system{margin-top:0;width:100%}
+  .solar-system .hero-sigil{top:var(--hero-sun-y,48px);width:clamp(76px,28svh,120px)}
+  .solar-system .hero-sigil img{display:block}
+}
+
+/* The decorative journey label yields space to content and motion controls. */
+@media (max-width: 420px) { .journey-caption { display: none; } }
+
+/* A restrained dark corona preserves the complete emblem against every sky.
+   The breathing light stays a separate layer, so it cannot wash out the text. */
+.solar-system .hero-sigil {
+  isolation:isolate;
+}
+.solar-system .hero-sigil::before {
+  content:"";
+  display:block;
+  position:absolute;
+  inset:-25% -28%;
+  z-index:-1;
+  pointer-events:none;
+  border-radius:50%;
+  border:0;
+  animation:none;
+  background:radial-gradient(ellipse closest-side,rgba(7,5,20,.92) 18%,rgba(9,6,25,.80) 45%,rgba(9,6,25,.45) 65%,transparent 100%);
+  filter:blur(8px);
+}
+.solar-system .hero-sigil img {
+  filter:brightness(1.12) contrast(1.08)
+    drop-shadow(0 0 .7px rgba(239,230,255,.95))
+    drop-shadow(0 1px 2px rgba(4,3,13,.95))
+    drop-shadow(0 0 7px rgba(155,129,238,.65));
+}
+.solar-system .hero-sigil .hero-glow {
+  inset:-4%;
+  background:radial-gradient(ellipse,rgba(176,130,255,.45),rgba(122,79,197,.24) 42%,transparent 70%);
+}

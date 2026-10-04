@@ -1,0 +1,216 @@
+/* The camera scans a single, overlapping photographic world. */
+#journey {
+  --plate-height: max(180svh, 177.7778vw);
+  --seam: clamp(64px, 9svh, 100px);
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background: #050912;
+  isolation: isolate;
+}
+.journey-world {
+  position: absolute;
+  inset: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  will-change: transform;
+}
+.journey-plate {
+  position: relative;
+  display: block;
+  flex: 0 0 var(--plate-height);
+  height: var(--plate-height);
+  width: 100%;
+  overflow: hidden;
+}
+.journey-plate + .journey-plate {
+  flex-basis: max(100svh, 177.7778vw);
+  height: max(100svh, 177.7778vw);
+  margin-top: calc(-1 * var(--seam));
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 var(--seam));
+  mask-image: linear-gradient(to bottom, transparent, #000 var(--seam));
+}
+@media (orientation: landscape) {
+  .journey-plate + .journey-plate {
+    flex-basis: max(100svh, 56.25vw);
+    height: max(100svh, 56.25vw);
+  }
+}
+.journey-plate img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.journey-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(4, 7, 17, .14), transparent 28%, rgba(4, 7, 17, .1)),
+    linear-gradient(90deg, rgba(3, 5, 13, .12), transparent 20% 80%, rgba(3, 5, 13, .12));
+}
+.journey-caption {
+  position: fixed;
+  left: clamp(20px, 3vw, 54px);
+  bottom: max(24px, env(safe-area-inset-bottom));
+  z-index: 3;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #eee8ff;
+  font: 500 9px/1.4 var(--font-sans);
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  text-shadow: 0 1px 6px #080a16;
+}
+.journey-rule {
+  width: 44px;
+  height: 1px;
+  background: rgba(218, 211, 248, .35);
+}
+.journey-rule i {
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: #cfc1ef;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+.scroll-invitation {
+  margin-top: 32px;
+  color: #e1d8ef;
+  font-size: 9px;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 8px #070b1c;
+}
+.scroll-invitation span { display: block; margin-top: 10px; font-size: 19px; }
+
+/* A light edge follows the PNG's alpha; there is no black halo. */
+#headerLogo {
+  height: 32px;
+  filter: brightness(1.12) drop-shadow(0 0 .6px rgba(244, 239, 255, .85))
+    drop-shadow(0 0 3px rgba(173, 219, 255, .4))
+    drop-shadow(0 0 8px rgba(163, 112, 236, .34));
+}
+.header-content {
+  background: linear-gradient(125deg, rgba(22, 17, 39, .88), rgba(17, 14, 33, .76));
+  border-color: rgba(219, 207, 245, .24);
+  box-shadow: inset 0 1px 0 rgba(240, 228, 255, .12), 0 10px 32px rgba(2, 3, 9, .24);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+.hero { min-height: 110svh; padding-top: clamp(120px, 17svh, 175px); }
+.hero-copy { background: rgba(8, 7, 20, .73); }
+.hero-glow { opacity: .65; }
+section {
+  max-width: 980px;
+  width: calc(100% - 48px);
+  margin-bottom: clamp(160px, 28svh, 300px);
+  background: linear-gradient(145deg, rgba(14, 12, 30, .82), rgba(10, 10, 23, .7));
+  border-color: rgba(228, 217, 255, .2);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  scroll-margin-top: 108px;
+}
+section.hero { width: 100%; }
+.card, .split > div, .contact-grid > div, .ask {
+  background: rgba(25, 20, 44, .58);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+footer {
+  max-width: 980px;
+  width: calc(100% - 48px);
+  background: rgba(12, 12, 24, .76);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  margin-bottom: 96px;
+  line-height: 1.8;
+}
+.reveal { opacity: 1; transform: none; }
+a:focus-visible, button:focus-visible, input:focus-visible {
+  outline: 2px solid #c2d9ff;
+  outline-offset: 5px;
+}
+
+@media (max-width: 900px) {
+  .grid.stages { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .header-content { gap: .45rem; }
+  nav a { letter-spacing: .08em; padding-inline: .3rem; }
+}
+@media (max-width: 720px) {
+  #headerLogo { height: 26px; max-width: 132px; }
+  .header-content { grid-template-columns: auto minmax(0, 1fr) auto; }
+  .hero { min-height: 102svh; padding-top: 102px; }
+  section { width: calc(100% - 32px); margin-bottom: 22svh; }
+  .split, .contact-grid { grid-template-columns: minmax(0, 1fr); }
+  .section-title { letter-spacing: .07em; }
+  .contact p { overflow-wrap: anywhere; }
+  .scroll-invitation { margin-top: 24px; }
+  .journey-caption { font-size: 8px; gap: 8px; bottom: max(16px, env(safe-area-inset-bottom)); }
+  .journey-rule { width: 28px; }
+  footer { width: calc(100% - 32px); }
+  .spread { gap: 8px; }
+  .slot { flex: 1 1 0; min-width: 0; max-width: 148px; }
+  .face { padding: .5rem .25rem; }
+}
+@media (max-width: 380px) {
+  .grid.stages { grid-template-columns: minmax(0, 1fr); }
+  #headerLogo { height: 24px; }
+  .tuner .wave { display: none; }
+  .tuner { padding-inline: .35rem; gap: .3rem; }
+  .tuner .hz { font-size: .58rem; letter-spacing: .06em; }
+  .cta-row { gap: .6rem; }
+  .btn { padding: .8rem .75rem; font-size: .7rem; }
+}
+
+/* Keep the journey's scenes, but replace camera travel with still frames. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  body.live .reveal { animation: none; opacity: 1; transform: none; }
+  .journey-world { transform: none !important; will-change: auto; }
+  .journey-plate, .journey-plate + .journey-plate {
+    position: fixed;
+    inset: 0;
+    height: 100%;
+    margin: 0 !important;
+    opacity: 0;
+    -webkit-mask-image: none !important;
+    mask-image: none !important;
+  }
+  .journey-plate:first-child, .journey-plate.is-active { opacity: 1; }
+  .journey-plate.is-active { z-index: 1; }
+}
+
+/* v34 (E8-13): ambient life for the forest and cave plates when WebGL is not
+   running (the GPU shader animates them itself). Compositor-only: a slow
+   parallax drift on the photo and a soft light sweep. journey.js pauses a
+   plate that is offscreen (no .is-onscreen); reduced motion keeps them still. */
+:root:not(:has(#journey[data-photo-motion="gpu"])) .journey-plate + .journey-plate img {
+  transform-origin: 50% 40%;
+  animation: plateDrift 46s ease-in-out infinite alternate;
+  will-change: transform;
+}
+:root:not(:has(#journey[data-photo-motion="gpu"])) .journey-plate + .journey-plate::after {
+  content: ""; position: absolute; inset: -10% -60%; pointer-events: none;
+  background: linear-gradient(105deg, transparent 38%, rgba(255,236,196,.07) 48%, rgba(255,236,196,.11) 50%, rgba(255,236,196,.07) 52%, transparent 62%);
+  animation: plateSweep 19s ease-in-out infinite; opacity: 0;
+}
+:root:not(:has(#journey[data-photo-motion="gpu"])) .journey-plate:last-child::after {
+  background: linear-gradient(105deg, transparent 40%, rgba(170,200,255,.06) 49%, rgba(170,200,255,.09) 50%, rgba(170,200,255,.06) 51%, transparent 60%);
+}
+.journey-plate:not(.is-onscreen) img, .journey-plate:not(.is-onscreen)::after,
+html[data-motion="paused"] .journey-plate img, html[data-motion="paused"] .journey-plate::after { animation-play-state: paused; }
+@keyframes plateDrift { from { transform: scale(1.03) translate3d(-.6%, 0, 0); } to { transform: scale(1.06) translate3d(.6%, -.8%, 0); } }
+@keyframes plateSweep { 0%, 100% { opacity: 0; transform: translate3d(-30%, 0, 0); } 50% { opacity: 1; } 99% { transform: translate3d(30%, 0, 0); } }
+@media (max-width: 720px) {
+  :root:not(:has(#journey[data-photo-motion="gpu"])) .journey-plate + .journey-plate::after { animation: none; content: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  :root:not(:has(#journey[data-photo-motion="gpu"])) .journey-plate + .journey-plate img { animation: none; transform: none; will-change: auto; }
+  :root:not(:has(#journey[data-photo-motion="gpu"])) .journey-plate + .journey-plate::after { animation: none; content: none; }
+}

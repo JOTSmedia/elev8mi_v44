@@ -1,0 +1,223 @@
+/* A readable, resolution-independent wordmark for the small navigation bar. */
+.brand { padding: 2px 5px; }
+.nav-wordmark {
+  display: block; color: #fffaf3; white-space: nowrap;
+  font: 700 30px/1.1 "Cinzel", Georgia, serif;
+  letter-spacing: .035em; text-shadow: none;
+}
+.nav-wordmark > span { color: #d8b9ff; }
+.header-content { background: rgba(12, 9, 24, .94); }
+.nav-trails { position: absolute; inset: 0 0 auto; height: 100%; overflow: hidden; border-radius: inherit; pointer-events: none; z-index: 20; }
+.nav-trails[hidden] { display: none; }
+.nav-trail { position: absolute; display: block; height: 1.5px; opacity: 0; transform-origin: center; background: linear-gradient(90deg, transparent, #bdb4ff 18%, #f7f4ff 50%, #a7dfff 82%, transparent); box-shadow: 0 0 2px rgba(178, 168, 255, .55); will-change: transform, opacity; }
+nav a[aria-current="location"] { color: #e4d4ff; text-shadow: 0 0 12px rgba(187, 155, 255, .35); }
+
+.solar-system { position: relative; isolation: isolate; width: min(1180px, calc(100vw - 32px)); height: clamp(350px, 54vw, 640px); flex-shrink: 0; margin: -28px auto 18px; }
+.solar-system > canvas, .solar-bodies { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.solar-system .hero-sigil { position: absolute; top: 50%; left: 50%; width: clamp(124px, 21vw, 240px); margin: 0; transform: translate(-50%, -50%); z-index: 6; }
+.solar-system .hero-sigil::before, .solar-system .hero-sigil::after { display: none; }
+.solar-system .hero-sigil img { animation: none; }
+.solar-system .hero-glow { inset: -4%; opacity: .8; }
+.solar-body { position: absolute; left: 0; top: 0; width: 44px; height: 44px; display: grid; place-items: center; border: 0; border-radius: 50%; background: transparent; padding: 0; pointer-events: auto; cursor: pointer; will-change: transform; }
+.solar-body img { display: block; max-width: none; height: auto; pointer-events: none; filter: drop-shadow(0 2px 4px rgba(0,0,0,.28)); }
+.solar-body:focus-visible { outline: 1px solid rgba(217,207,255,.8); outline-offset: 5px; }
+.solar-moon { width: 14px; height: 14px; }
+.planet-detail { position: absolute; left: 50%; bottom: 32px; transform: translateX(-50%) translateY(6px); z-index: 30; display: flex; align-items: center; justify-content: center; gap: 12px; width: max-content; max-width: 90%; min-height: 64px; padding: 8px 15px; border: 1px solid rgba(207,189,249,.22); border-radius: 14px; background: rgba(7,9,21,.94); color: #eee8ff; font: 500 10px/1.6 var(--font-sans); opacity: 0; visibility: hidden; transition: opacity .2s, transform .2s; pointer-events: none; }
+.planet-detail.is-visible { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+.planet-portrait { width: 54px; max-height: 54px; object-fit: contain; }
+
+#worldEffects, .world-weather { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.world-weather { opacity: var(--fog-opacity, 0); transition: opacity .3s linear; overflow: hidden; }
+.mist-stream { position: absolute; left: -35%; width: 140%; height: 43%; background: url("assets/mist.webp") center / contain no-repeat; opacity: .28; will-change: transform; }
+.mist-stream-one { bottom: 2%; animation: mistAcross 43s ease-in-out infinite alternate; }
+.mist-stream-two { bottom: 32%; opacity: .16; transform: scaleX(-1); animation: mistBack 61s ease-in-out infinite alternate; }
+.light-shaft { position: absolute; top: -25%; right: 14%; width: 16%; height: 145%; transform: rotate(21deg); background: linear-gradient(90deg, transparent, rgba(219,223,255,.065), transparent); opacity: var(--light-opacity,0); animation: lightBreathe 19s ease-in-out infinite alternate; }
+@keyframes mistAcross { from { transform: translate3d(-9%, 3%, 0) scale(1); } to { transform: translate3d(28%, -6%, 0) scale(1.1); } }
+@keyframes mistBack { from { transform: translate3d(25%, 0, 0) scaleX(-1); } to { transform: translate3d(-15%, 9%, 0) scaleX(-1.1); } }
+@keyframes lightBreathe { from { opacity: .3; } to { opacity: .9; } }
+html[data-motion="paused"] .mist-stream, html[data-motion="paused"] .light-shaft, html[data-motion="paused"] .hero-sigil .hero-glow { animation-play-state: paused !important; }
+@media (max-width: 900px) { .nav-wordmark { font-size: 26px; } }
+@media (max-width: 720px) {
+  .nav-wordmark { font-size: 23px; letter-spacing: .02em; }
+  .brand { padding: 0; }
+  .solar-system { margin-top: -15px; width: calc(100vw - 18px); height: clamp(330px, 77vw, 430px); }
+  .planet-detail { font-size: 9px; bottom: 44px; }
+  .journey-caption { max-width: 58%; }
+}
+@media (max-width: 380px) { .nav-wordmark { font-size: 21px; } }
+@media (prefers-reduced-motion: reduce) {
+  .world-weather { transition: none; }
+  .solar-body { will-change: auto; }
+}
+
+.planet-disc { clip-path: circle(49.5% at 50% 50%); }
+/* Restore the original celestial lettering, at a readable size. */
+.nav-wordmark-image { display:block; width:clamp(145px,15vw,205px); height:auto; max-height:48px; object-fit:contain; filter:drop-shadow(0 0 1px #fff2ce) drop-shadow(0 2px 3px #080513); }
+.brand { flex-shrink:0; }
+.solar-moon { width:44px; height:44px; }
+.orbit-moon-disc { width:30px; height:30px; filter:drop-shadow(0 0 5px #a7bbd966); }
+.moon-now { position:absolute; right:2%; bottom:0; z-index:15; display:flex; align-items:center; gap:10px; padding:8px 12px; border-radius:18px; background:rgba(7,9,22,.7); border:1px solid #c8bdea25; text-align:left; pointer-events:auto; }
+.moon-now canvas { width:74px; height:74px; flex-shrink:0; }
+.moon-now > div { display:flex; flex-direction:column; gap:5px; }
+.moon-kicker { font:500 8px/1.4 var(--font-sans); text-transform:uppercase; letter-spacing:.16em; color:#cfc2e7; }
+#moonPhaseName { font:500 13px/1.3 var(--font-sans); color:#f1ebff; }
+#moonPhaseInfo { font:400 10px/1.4 var(--font-sans); color:#bbaecc; }
+section::before { background:transparent; font-family:Georgia,serif; padding:0; font-size:25px; text-shadow:0 0 14px currentColor; }
+#about::before { content:'✦'; color:#b5dfff; }
+#services::before { content:'☽'; color:#e5c4ff; }
+#portfolio::before { content:'❋'; color:#d4a9ed; }
+#testimonials::before { content:'✧'; color:#f0d4aa; }
+#reading::before { content:'♧'; color:#bcded1; }
+#contact::before { content:'✵'; color:#e2b9d8; }
+.reading-steps { list-style:none; display:grid; grid-template-columns:repeat(3,1fr); gap:14px; padding:0; margin:1rem 0; }
+.reading-steps li { padding:16px; border:1px solid #d0c1ec33; background:#0e0b1aaf; border-radius:14px; }
+.reading-steps b,.reading-steps span { display:block; }
+.reading-steps b { font:600 12px/1.5 var(--font-sans); color:#e5d0fb; margin-bottom:6px; }
+.reading-steps span { font:400 14px/1.6 var(--font-sans); color:#d8cfe2; }
+.reading-help { display:block; margin:16px auto 25px; border:0; border-bottom:1px solid #c6b1e8; background:transparent; color:#ddc9f7; padding:5px; cursor:pointer; }
+.question-label { display:block; font:500 12px/1.6 var(--font-sans); margin-bottom:8px; color:#eadcf8; }
+.question-label span { color:#b7aac4; }
+#readingGuide { max-width:520px; width:calc(100% - 36px); margin:auto; padding:32px; border:1px solid #b59ad777; border-radius:20px; background:#130e22; color:#eee5f8; box-shadow:0 20px 80px #000b; }
+#readingGuide::backdrop { background:#050810bf; backdrop-filter:blur(5px); }
+#readingGuide h2 { font:500 21px/1.4 'Cinzel',serif; margin:0 18px 20px 0; }
+#readingGuide p { font:400 15px/1.7 var(--font-sans); margin:14px 0; }
+#closeReadingGuide { position:absolute; right:15px; top:10px; border:0; background:transparent; color:#eadcf8; font-size:28px; cursor:pointer; }
+#beginReading { padding:12px 18px; border:1px solid #c8afe4; border-radius:10px; background:#56347a; color:white; cursor:pointer; }
+.copy-row [hidden] { display:none; }
+@media(max-width:720px){ .nav-wordmark-image { width:155px;max-height:38px; } .moon-now { right:50%;transform:translateX(50%);bottom:-22px;width:max-content;max-width:94%;padding:5px 10px; } .moon-now canvas { width:54px;height:54px; } .solar-system { margin-bottom:55px; } .reading-steps { grid-template-columns:1fr;gap:8px; } .reading-steps li { padding:12px 16px; } }
+
+/* The halo follows the visible crescent, not the unlit full-disc silhouette. */
+#liveMoon, .orbit-moon-disc, canvas.planet-portrait {
+  filter: brightness(1.22) contrast(1.04) drop-shadow(0 0 2px rgba(247,249,255,.9)) drop-shadow(0 0 9px rgba(186,218,255,.65)) drop-shadow(0 0 20px rgba(167,162,255,.35));
+}
+
+.solar-system .hero-sigil .hero-glow { animation: solarBreath 6s ease-in-out infinite; }
+@keyframes solarBreath {
+  0%,100% { opacity:.62;transform:scale(.98); }
+  50% { opacity:.92;transform:scale(1.035); }
+}
+.orbit-moon-disc { width:58px;height:58px; }
+@media(max-width:720px) { .orbit-moon-disc { width:50px;height:50px; } }
+.moon-now canvas { width:86px;height:86px; }
+@media(max-width:720px) { .moon-now canvas { width:66px;height:66px; } }
+
+/* Keep the full orbit layer beneath the central emblem. */
+.solar-system .solar-bodies { z-index:3; }
+.solar-system .hero-sigil { z-index:25; }
+#liveMoon, .orbit-moon-disc, canvas.planet-portrait {
+  filter:brightness(1.38) contrast(1.04) drop-shadow(0 0 3px rgba(255,255,255,1)) drop-shadow(0 0 12px rgba(198,226,255,.95)) drop-shadow(0 0 27px rgba(170,192,255,.7)) drop-shadow(0 0 42px rgba(170,155,255,.4));
+}
+
+.solar-system .hero-sigil { top:27%; }
+.earth-location { color:#cbeaff; white-space:nowrap; font:500 9px/1.5 var(--font-sans); letter-spacing:.08em; text-shadow:0 0 9px #5eb8ff; width:44px;height:44px; }
+.earth-location::before { content:'';position:absolute;top:14px;left:18px;width:7px;height:7px;border:1px solid #bce9ff;border-radius:50%;box-shadow:0 0 9px #8ecfff; }
+.earth-location { padding-top:35px; }
+@media(max-width:720px){ .solar-system { height:470px; } }
+/* Obvious cloud advection, confined to the clouds in the original plates. */
+
+.deck-choices { display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin:22px auto;max-width:690px; }
+.deck-choice { border:1px solid #b994ef;padding:0;width:64px;height:104px;border-radius:7px;cursor:pointer;background:#100922;box-shadow:0 6px 18px #0007;transition:transform .25s,opacity .25s,box-shadow .25s; }
+.deck-choice:hover:not(:disabled),.deck-choice:focus-visible { transform:translateY(-9px);box-shadow:0 0 18px #9f83d999;outline:2px solid #d6beff;outline-offset:3px; }
+.deck-choice.is-chosen { opacity:.25;transform:translateY(-6px); }
+.deck-choice:disabled { cursor:default; }
+.deck-back { display:grid;place-items:center;margin:5px;height:calc(100% - 10px);border:1px solid #b298d977;border-radius:4px;background:repeating-conic-gradient(from 45deg at 50% 50%,#110b25 0deg 15deg,#251138 15deg 30deg);color:#d4bdff; }
+.deck-back > span { border:1px solid #c6a5f1;border-radius:50%;background:#1c1134;padding:5px;font-size:24px;text-shadow:0 0 10px #9ed8ff; }
+.illustrated-card { width:184px;height:282px;border:1px solid #c4a8e7;border-radius:8px;overflow:hidden;box-shadow:0 12px 30px #0007,0 0 18px #aa8dd533;animation:cardArrival .5s ease-out both; }
+.tarot-art { width:100%;height:100%;background-image:url('assets/tarot-atlas.webp');background-size:1300% 600%;background-repeat:no-repeat; }
+.tarot-art.is-reversed { transform:rotate(180deg); }
+#spread .slot { width:184px; }
+.tarot-name { color:#e5d2fb;font:500 13px/1.5 var(--font-sans);margin:10px 0 4px; }
+.tarot-orientation { color:#b1d7ed;font:400 10px/1.4 var(--font-sans); }
+@keyframes cardArrival { from{opacity:0;transform:translateY(16px) scale(.96);}to{opacity:1;transform:none;} }
+@media(max-width:720px){ .deck-choice { width:52px;height:84px; } .deck-choices { gap:7px; } #spread .slot,.illustrated-card { width:148px; } .illustrated-card { height:230px; } }
+
+.day-sky,.night-sky { position:absolute;inset:0;pointer-events:none; }
+.day-sky { opacity:var(--daylight,0);background:radial-gradient(ellipse at 63% 45%,rgba(255,188,111,.34),rgba(154,206,244,.1) 48%,transparent 80%);mix-blend-mode:screen; }
+.night-sky { opacity:var(--nightlight,1);background:linear-gradient(180deg,rgba(3,8,30,.2),rgba(9,14,38,.3)); }
+.journey-world,#worldEffects { filter:brightness(calc(.96 + var(--daylight,0) * .16)) saturate(calc(1.12 - var(--daylight,0) * .04)); }
+.solar-system .hero-sigil .hero-glow { background:radial-gradient(circle,rgba(225,182,255,.95),rgba(164,107,255,.6) 34%,rgba(102,56,159,.28) 54%,transparent 72%); }
+.tarot-art { position:relative; }
+.tarot-art::after { content:'';position:absolute;bottom:0;left:0;right:0;height:9%;background:linear-gradient(0deg,#100921 75%,transparent); }
+
+#photoMotion { position:absolute;inset:0;width:100%;height:100%;pointer-events:none; }
+/* Grade only viewport-sized animation canvases, not the entire tall panorama. */
+.journey-world { filter:none; }
+#photoMotion,#worldEffects { filter:brightness(calc(.96 + var(--daylight,0) * .16)) saturate(calc(1.12 - var(--daylight,0) * .04)); }
+@media(prefers-reduced-motion:reduce){ #photoMotion { display:none; } }
+
+#fill { transition:none; }
+
+/* Opaque translucent panels preserve contrast without repeatedly blurring moving scenery. */
+section,footer { backdrop-filter:none;-webkit-backdrop-filter:none; }
+@media(max-width:720px){ #reading #spread { display:grid;grid-template-columns:repeat(auto-fit,minmax(128px,1fr)); } #reading #spread .slot { width:100%;max-width:none; } .illustrated-card { width:100%;height:auto;aspect-ratio:184/282; } }
+
+/* Completed readings open a focused, reviewable email draft. */
+#interpretDialog{box-sizing:border-box;width:min(540px,calc(100% - 32px));max-height:85dvh;overflow:auto;padding:30px;border:1px solid #b899e877;border-radius:22px;background:#171024;color:#f7efff;box-shadow:0 24px 90px #0009;font:inherit}
+#interpretDialog::backdrop{background:#080511bb}
+#interpretDialog h2{padding-right:22px;color:#ead3ff;margin-top:0}
+#interpretDialog p,#interpretCards{line-height:1.6}
+#closeInterpret{position:absolute;right:14px;top:10px;background:transparent;border:0;color:#ead3ff;font-size:28px;cursor:pointer}
+#interpretMessage{box-sizing:border-box;display:block;width:100%;margin:10px 0 18px;padding:14px;resize:vertical;border:1px solid #b899e855;border-radius:12px;background:#0d0916;color:#f7efff;font:inherit;line-height:1.5}
+.interpret-email{display:inline-block;padding:12px 20px;border-radius:999px;background:#d7b9f7;color:#21112f;font-weight:700;text-decoration:none}
+#interpretDialog .interpret-note{font-size:.85rem;color:#c6b5d5}
+#continueReading,#interpretReading{padding:10px 16px;border:1px solid #b899e877;border-radius:999px;background:#271a3d;color:#f7efff;cursor:pointer}
+#interpretReading[hidden]{display:none}
+#interpretDialog :focus-visible{outline:2px solid #efcdff;outline-offset:4px}
+.spinning-planet{position:absolute;left:50%;top:50%;height:auto;border-radius:50%;pointer-events:none;filter:drop-shadow(0 0 3px var(--planet-glow,#bacfff)) drop-shadow(0 0 8px color-mix(in srgb,var(--planet-glow,#bacfff) 45%,transparent))}
+.solar-body[data-planet] img{filter:drop-shadow(0 0 4px var(--planet-glow,#bacfff))}
+
+.load-progress-ring{position:absolute;inset:-12%;width:124%;height:124%;overflow:visible;transform:rotate(-90deg);pointer-events:none;z-index:2}
+.load-progress-ring circle{fill:none;stroke-width:1.1}
+.load-ring-track{stroke:rgba(201,177,240,.18)}
+#loadRingProgress{stroke:#c9adff;stroke-linecap:round;stroke-dasharray:100;stroke-dashoffset:100;filter:drop-shadow(0 0 3px #bb83ff) drop-shadow(0 0 7px #83dfff);}
+#loader.revealing .load-progress-ring{opacity:0}
+.solar-system .hero-sigil .hero-glow{filter:blur(8px)}
+
+/* Native modal stays centered even when opened far down the page. */
+#interpretDialog{position:fixed;inset:0;margin:auto;height:fit-content;max-height:calc(100dvh - 32px)}
+select.reading-style{box-sizing:border-box;width:100%;padding:14px 42px 14px 16px;border:1px solid #b899e877;border-radius:12px;background:#171024;color:#f7efff;font:inherit;color-scheme:dark;cursor:pointer}
+select.reading-style option{background:#171024;color:#f7efff}
+
+/* The circle encloses the emblem AND Allison; the linear loader sits below. */
+.load-emblem{position:relative;width:min(82vw,420px,65dvh);aspect-ratio:1;flex-shrink:0;margin-bottom:16px}
+.load-emblem .load-progress-ring{inset:0;width:100%;height:100%}
+.load-emblem .load-mark{position:absolute;left:15%;top:9%;width:70%;margin:0}
+.load-emblem .load-kicker{position:absolute;bottom:13%;left:0;right:0;margin:0;text-align:center;letter-spacing:.32em;font-size:clamp(.9rem,3vw,1.1rem)}
+#loader .load-ui{margin-top:0;width:min(78vw,420px)}
+#loader .veil{box-sizing:border-box;width:100%;margin-top:12px}
+#loader.revealing .load-emblem{opacity:0}
+
+#horizonSun{position:absolute;left:68%;width:clamp(38px,6vw,76px);aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%);opacity:0;pointer-events:none;z-index:2;background:radial-gradient(circle at 40% 40%,#fffef1,#fff7bd 45%,#ffbb58 75%,#ee822c);box-shadow:0 0 24px 8px #ffdc8d99,0 0 85px 28px #ffbd5866}
+.day-sky{background:radial-gradient(ellipse at 68% 55%,rgba(255,199,110,.48),rgba(124,193,239,.26) 48%,transparent 85%)}
+
+/* Overexposed solar disc with soft atmospheric scatter, rather than a
+   yellow shaded globe. Its lower limb is clipped by the Earth horizon. */
+#horizonSun{width:clamp(34px,4.6vw,62px);background:radial-gradient(circle,#fffef8 0%,#fffdec 68%,#fff6d9 87%,#ffd99b 98%);box-shadow:0 0 4px 1px #fff9e9,0 0 20px 7px #fff3cdcc,0 0 54px 22px #ffd4a177,0 0 140px 52px #ffbe7344}
+#horizonSun::after{content:"";position:absolute;inset:-240%;border-radius:50%;background:radial-gradient(circle,rgba(255,240,196,.27),rgba(255,198,130,.13) 30%,transparent 70%);pointer-events:none}
+
+.twilight-sky{position:absolute;inset:0;pointer-events:none;opacity:var(--twilight,0);background:linear-gradient(180deg,rgba(45,40,83,.10),rgb(var(--twilight-color,255 174 108) / .18) 60%,transparent);mix-blend-mode:screen}
+
+#horizonSun{left:33%}
+.day-sky{background:radial-gradient(ellipse at 33% 55%,rgba(255,199,110,.38),rgba(124,193,239,.18) 48%,transparent 85%)}
+
+/* Preserve the full proportions and printed titles of the authentic deck. */
+.illustrated-card { height:316px; }
+.tarot-art::after { display:none; }
+@media(max-width:720px) { .illustrated-card { height:auto; aspect-ratio:192/330; } }
+
+/* E8-05 Sun: limb-darkened photosphere and a soft veiling glare (the eye/lens
+   scatter around a bright source). No ghosts, rings or starburst flares.
+   Size (34–62px), position, clipping and the sunrise/sunset glow are unchanged. */
+#horizonSun{background:radial-gradient(circle,#ffffff 0%,#fffef6 42%,#fff6dc 74%,#ffe2ae 92%,#ffc985 100%)}
+#horizonSun::before{content:"";position:absolute;inset:-420%;border-radius:50%;pointer-events:none;mix-blend-mode:screen;
+  background:radial-gradient(circle,rgba(255,250,236,.30) 0%,rgba(255,238,206,.14) 6%,rgba(255,222,176,.06) 14%,rgba(255,205,150,.025) 28%,transparent 52%)}
+
+/* E8-06 style audit, scene labels (STYLE-AUDIT.md §5). Tokens come from
+   polish.css, loaded last by the master index.html; fallbacks keep the
+   v31 values readable if it is absent. Sizes are unchanged. */
+.earth-location { font-family:var(--font-sans,"Plus Jakarta Sans",system-ui,sans-serif); font-weight:500; text-transform:uppercase; letter-spacing:.2em; color:var(--text,#F5F0FA); }
+.moon-kicker { letter-spacing:.2em; color:var(--accent,#FFD700); }
+#moonPhaseName { color:var(--text,#F5F0FA); font-weight:600; }
+#moonPhaseInfo { color:var(--text-muted,#c9b7e0); }
+.planet-detail .planet-detail-name { font-family:var(--font-sans,"Plus Jakarta Sans",system-ui,sans-serif); font-weight:600; text-transform:uppercase; letter-spacing:.12em; color:var(--text,#F5F0FA); }
+.planet-detail .planet-detail-figures { color:var(--text-muted,#c9b7e0); }

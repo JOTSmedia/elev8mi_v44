@@ -1,0 +1,43 @@
+/* Lighting belongs to the photographed sky and surface, never the cave.
+   GPU sky scattering and the 2D fallback each own their local exposure. */
+.day-sky, .night-sky, .twilight-sky{ display: none; }
+#photoMotion, #worldEffects { filter: none; }
+/* The CPU globe replaces the photographed Earth after its maps are ready.
+   Keep only the upper Milky Way so seam blending cannot reveal a static rim. */
+#journey[data-earth-fallback="projected"]:not([data-photo-motion="gpu"]) .journey-plate:first-child img {
+  -webkit-mask-image: linear-gradient(#000 42%, transparent 45.5%);
+  mask-image: linear-gradient(#000 42%, transparent 45.5%);
+}
+@media (prefers-reduced-motion: reduce) {
+  #journey[data-earth-fallback="projected"] .journey-plate:first-child img {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+}
+
+.world-weather { opacity: 1; transition: none; }
+.mist-stream {
+  opacity: var(--atmosphere-mist, 0);
+  filter: brightness(calc(.45 + var(--daylight, 0) * .65))
+    sepia(calc(var(--twilight, 0) * .45))
+    saturate(calc(1 + var(--twilight, 0) * .6));
+}
+.mist-stream-two { opacity: calc(var(--atmosphere-mist, 0) * .58); }
+.light-shaft {
+  left: calc(var(--sun-azimuth, .33) * 100% - 8%);
+  right: auto;
+  opacity: var(--atmosphere-rays, 0);
+  background: linear-gradient(90deg, transparent, rgb(var(--twilight-color, 255 174 108) / .20), transparent);
+  animation: atmosphereRayDrift 32s ease-in-out infinite alternate;
+}
+#journey[data-photo-motion="gpu"] .light-shaft { display: none; }
+@keyframes atmosphereRayDrift {
+  from { transform: rotate(-16deg) translate3d(-4%, 0, 0); }
+  to { transform: rotate(-11deg) translate3d(4%, 0, 0); }
+}
+html[data-motion="paused"] .light-shaft,
+html[data-motion="paused"] .mist-stream { animation-play-state: paused !important; }
+@media (prefers-reduced-motion: reduce) {
+  .light-shaft { display: none; }
+  .mist-stream { animation: none; will-change: auto; }
+}

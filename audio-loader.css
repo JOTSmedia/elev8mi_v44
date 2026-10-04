@@ -1,0 +1,39 @@
+/* v35 lazy-sound loader + error states for the 528 Hz sound menu (ELEV8MI).
+   CSS only. Uses the site's existing variables (--gold, --violet, --magenta, --gold-glow).
+   Link AFTER nav-glass.css:  <link rel="stylesheet" href="audio-loader.css?v=38"> */
+@keyframes elev8-sound-spin{to{transform:rotate(360deg)}}
+@keyframes elev8-sound-pulse{50%{opacity:.35}}
+/* option is loading: small gold/violet ring at the end of the row */
+.sound-menu [role="menuitemradio"][data-state="loading"]::after{
+  content:"";flex:none;width:9px;height:9px;margin-left:auto;border-radius:50%;
+  border:1.5px solid rgba(157,78,221,.55);border-top-color:var(--gold);
+  box-shadow:0 0 6px rgba(255,215,0,.35);animation:elev8-sound-spin .8s linear infinite;
+}
+/* option failed: magenta retry mark; tapping the option again retries */
+.sound-menu [role="menuitemradio"][data-state="error"]{color:var(--magenta)}
+.sound-menu [role="menuitemradio"][data-state="error"]::after{
+  content:"\21BB";flex:none;margin-left:auto;font-size:.8rem;line-height:1;color:var(--magenta);
+}
+/* the menu closes on pick, so the pill button mirrors the state: caret becomes the ring */
+.sound-menu-button[data-state="loading"] .sound-caret{
+  width:8px;height:8px;border:1.5px solid rgba(157,78,221,.55);border-top-color:var(--gold);border-radius:50%;
+  transform:none;animation:elev8-sound-spin .8s linear infinite;
+}
+.sound-menu-button[data-state="error"]{color:var(--magenta)}
+.sound-menu-button[data-state="error"] .sound-caret{border-top-color:var(--magenta)}
+@media (prefers-reduced-motion:reduce){
+  .sound-menu [role="menuitemradio"][data-state="loading"]::after,
+  .sound-menu-button[data-state="loading"] .sound-caret{animation:elev8-sound-pulse 1.4s ease-in-out infinite}
+}
+
+/* v37: the 528 Hz engine itself is lazy. Nothing in sound-config/audio.js is
+   requested until the visitor touches the 528 Hz controls. */
+.tuner.audio-booting{position:relative;filter:drop-shadow(0 0 10px var(--sky-accent,#b990ff))}
+.tuner.audio-booting #toneBtn .mark{opacity:.22}
+.tuner.audio-booting #toneBtn::after{
+  content:"";position:absolute;inset:50% auto auto 50%;width:12px;height:12px;margin:-7px 0 0 -7px;border-radius:50%;
+  border:1.5px solid rgba(255,255,255,.28);border-top-color:var(--sky-accent,#b990ff);border-right-color:var(--sky-accent-2,#7fdcff);
+  box-shadow:0 0 10px color-mix(in srgb,var(--sky-accent,#b990ff) 70%,transparent);animation:elev8-sound-spin .65s linear infinite;
+}
+.tuner.audio-booting .wave i{animation-duration:.55s!important;filter:drop-shadow(0 0 5px var(--sky-accent,#b990ff))}
+.tuner.audio-boot-error #toneBtn::after{content:"!";position:absolute;inset:50% auto auto 50%;transform:translate(-50%,-53%);color:var(--magenta);font-weight:800}

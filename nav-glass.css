@@ -1,0 +1,158 @@
+/* Translucent violet/blue glass, with white reflections from the emblem. */
+.header-content {
+  --nav-glass-tint:linear-gradient(112deg,rgba(175,120,248,.34),rgba(111,155,236,.22) 32%,rgba(235,244,255,.17) 53%,rgba(103,183,243,.27) 76%,rgba(146,105,230,.34));
+  background:linear-gradient(180deg,rgba(255,255,255,.15),rgba(20,15,46,.46)),var(--nav-glass-tint);
+  border-color:rgba(232,233,255,.4);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.42),inset 0 -1px 0 rgba(163,165,247,.22),0 10px 30px rgba(3,6,20,.24),0 0 24px rgba(132,147,235,.08);
+  backdrop-filter:blur(20px) saturate(1.55);
+  -webkit-backdrop-filter:blur(20px) saturate(1.55);
+}
+.nav-trails {
+  position:absolute;inset:0;width:100%;height:100%;
+  overflow:hidden;border-radius:inherit;pointer-events:none;z-index:20;
+}
+.nav-trail {
+  position:static;display:block;fill:none;stroke:url(#navTraceSpectrum);
+  stroke-width:1.7px;stroke-linecap:round;stroke-linejoin:round;
+  opacity:.95;background:none;box-shadow:none;transform:none;
+  filter:drop-shadow(0 0 2px rgba(196,207,255,.85));
+  will-change:auto;
+}
+.nav-trail-bottom{opacity:.85}
+header nav a:hover,header nav a[aria-current="location"] {
+  color:#f4eeff;text-shadow:0 0 10px rgba(181,185,255,.65),0 1px 5px rgba(4,4,20,.95);
+}
+.menu-toggle{border-color:rgba(218,230,255,.55);background:rgba(68,54,118,.15)}
+.menu-toggle span{background:#e9edff}
+@media(max-width:720px){
+  header nav {
+    background:linear-gradient(180deg,rgba(26,23,57,.56),rgba(18,17,40,.74)),var(--nav-glass-tint);
+    border-color:rgba(218,225,255,.35);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 16px 32px rgba(4,5,20,.3);
+    backdrop-filter:blur(20px) saturate(1.45);
+    -webkit-backdrop-filter:blur(20px) saturate(1.45);
+  }
+  header nav a{border-bottom-color:rgba(207,213,255,.18)}
+  header nav a:last-child{border-bottom:0}
+}
+/* v29 sound menu: a dropdown inside the 528 Hz equalizer pill. */
+.sound-picker{position:relative;display:flex;align-items:center}
+.tuner button.sound-menu-button{
+  width:auto;height:22px;padding:0 .45rem 0 .55rem;gap:.3rem;display:inline-flex;align-items:center;
+  border-radius:999px;border-color:rgba(255,255,255,.55);
+  font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;line-height:1;
+}
+.tuner button.sound-menu-button:disabled{cursor:default;opacity:.9}
+.tuner button.sound-menu-button:disabled .sound-caret{display:none}
+.sound-caret{width:0;height:0;border-left:3px solid transparent;border-right:3px solid transparent;border-top:4px solid currentColor;transition:transform .2s}
+.sound-menu-button[aria-expanded="true"] .sound-caret{transform:rotate(180deg)}
+.sound-menu{
+  position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%);z-index:30;
+  min-width:128px;margin:0;padding:6px;list-style:none;
+  background:linear-gradient(180deg,rgba(38,30,78,.94),rgba(18,14,40,.96));
+  border:1px solid rgba(232,233,255,.4);border-radius:14px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 14px 30px rgba(3,6,20,.45);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+}
+.sound-menu[hidden]{display:none}
+.sound-menu [role="menuitemradio"]{
+  display:flex;align-items:center;gap:.5rem;min-height:36px;padding:0 .7rem;border-radius:9px;cursor:pointer;
+  font-family:"Cinzel",serif;font-weight:600;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:#f4eeff;white-space:nowrap;
+}
+.sound-menu [role="menuitemradio"]::before{content:"";width:6px;height:6px;border-radius:50%;border:1px solid rgba(255,215,0,.6)}
+.sound-menu [role="menuitemradio"][aria-checked="true"]{color:var(--gold)}
+.sound-menu [role="menuitemradio"][aria-checked="true"]::before{background:var(--gold);box-shadow:0 0 6px var(--gold-glow)}
+.sound-menu [role="menuitemradio"]:hover,.sound-menu [role="menuitemradio"]:focus-visible{background:rgba(255,215,0,.12);outline:none}
+.sound-menu [role="menuitemradio"]:focus-visible{box-shadow:inset 0 0 0 1px var(--gold)}
+@media(max-width:800px){.tuner button.sound-menu-button{padding:0 .35rem 0 .42rem;letter-spacing:.06em}}
+@media(max-width:720px){.sound-menu [role="menuitemradio"]{min-height:44px;font-size:.78rem}}
+
+/* v29 nav indicator lines use the brand gold token. */
+#navTraceSpectrum stop:nth-child(1),#navTraceSpectrum stop:nth-child(5){stop-color:var(--gold-deep)}
+#navTraceSpectrum stop:nth-child(2),#navTraceSpectrum stop:nth-child(4){stop-color:var(--gold)}
+#navTraceSpectrum stop:nth-child(3){stop-color:var(--gold-soft)}
+.nav-trail{filter:drop-shadow(0 0 2px var(--gold-glow))}
+.nav-trails.is-parked .nav-trail{stroke:var(--gold);opacity:1;animation:navLand .32s ease-out}
+@keyframes navLand{from{opacity:0}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){.nav-trails.is-parked .nav-trail{animation:none}}
+/* Mobile menu: gold lines exactly over and under the active link's text. */
+@media(max-width:720px){
+  header nav a{position:relative;--nav-pad-x:.3rem;padding-inline:var(--nav-pad-x)}
+  header nav a[aria-current="location"]::before,header nav a[aria-current="location"]::after{
+    content:"";position:absolute;left:var(--nav-pad-x,.9rem);right:var(--nav-pad-x,.9rem);height:1.5px;
+    background:var(--gold);box-shadow:0 0 6px var(--gold-glow);border-radius:1px;pointer-events:none;
+  }
+  header nav a[aria-current="location"]::before{top:.35rem}
+  header nav a[aria-current="location"]::after{bottom:.35rem}
+}
+
+/* v30 phone header: logo, 528 Hz pill and menu never overlap (320-430 px
+   portrait and phone landscape). Desktop (>960 px) is unchanged. */
+.tuner button.sound-menu-button{position:relative}
+.tuner button.sound-menu-button::after{content:"";position:absolute;left:-2px;right:-2px;top:50%;height:40px;transform:translateY(-50%)}
+#soundMenuLabel{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sound-menu [role="menuitemradio"]{min-height:40px}
+@media(max-width:720px){
+  .header-content{gap:.4rem}
+  .tuner-slot{justify-content:center}
+  .tuner{gap:.25rem;padding-inline:.4rem .1rem}
+  #soundMenuLabel{max-width:58px}
+  .sound-menu{max-height:calc(100dvh - 76px);overflow-y:auto;overscroll-behavior:contain}
+}
+@media(max-width:480px){
+  .nav-wordmark-image{width:124px}
+  #toneBtn{width:40px;min-width:40px}
+}
+@media(max-width:400px){
+  .tuner .hz{display:none}
+  .nav-wordmark-image{width:118px}
+  #soundMenuLabel{max-width:48px}
+}
+@media(max-width:340px){
+  .nav-wordmark-image{width:96px}
+  .header-content{gap:.3rem;padding-inline:.5rem .45rem}
+  #soundMenuLabel{max-width:40px}
+}
+/* Short landscape phones: two-column sound menu fits above the fold. */
+@media(max-height:500px) and (orientation:landscape){
+  .sound-menu{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px;min-width:250px;max-height:calc(100dvh - 72px);overflow-y:auto}
+  .sound-menu[hidden]{display:none}
+}
+/* Phone landscape / small tablets using the inline nav (721-960 px). */
+@media(min-width:721px) and (max-width:960px){
+  .tuner .hz{display:none}
+  .header-content{gap:.4rem}
+  nav a{letter-spacing:.06em;padding-inline:.28rem}
+  .nav-wordmark-image{width:132px}
+}
+/* v31: the equalizer bars stay visible on phones and tablets too (they were
+   hidden below 960 px). Same bars and animation as desktop, just a compact
+   width; this overrides the older hide rules in journey.css and
+   responsive-polish.css. */
+@media(max-width:960px){
+  .tuner .wave{display:flex;width:17px;flex-shrink:0;gap:3px}
+}
+@media(max-width:400px){
+  .tuner .wave{width:14px;gap:2px}
+}
+@media(max-width:340px){
+  .tuner .wave{width:11px;gap:1px}
+}
+/* v31: room for the bars. A slightly shorter sound label (ellipsis) and a
+   smaller wordmark keep the logo, pill and menu clear with "Singing Bowl". */
+@media(min-width:721px) and (max-width:960px){
+  #soundMenuLabel{max-width:60px}
+  .tuner{gap:.25rem}
+}
+@media(max-width:480px){
+  .nav-wordmark-image{width:112px}
+  #soundMenuLabel{max-width:50px}
+}
+@media(max-width:400px){
+  .nav-wordmark-image{width:106px}
+  #soundMenuLabel{max-width:42px}
+}
+@media(max-width:340px){
+  .nav-wordmark-image{width:88px}
+  #soundMenuLabel{max-width:34px}
+}

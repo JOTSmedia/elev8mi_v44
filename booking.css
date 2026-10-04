@@ -1,0 +1,15 @@
+/* Book a personalized reading: reuses the .send-reading form styles. */
+#book::before { content:'✧'; color:#f0d4aa; }
+#book .booking-intro { max-width:640px; margin:0 auto 1.2rem; text-align:center; color:#e6daf4; line-height:1.6; }
+#book .booking-form { max-width:640px; margin:0 auto; text-align:left; }
+#book .send-reading textarea { min-height:96px; }
+.booking-choices { margin:0 0 10px; padding:0; border:0; display:grid; gap:8px; }
+.booking-choices legend { padding:0; margin-bottom:6px; font-size:.85rem; color:#efe4ff; }
+.booking-option { position:relative; display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:4px 12px; min-height:44px; padding:10px 14px; border:1px solid #b899e877; border-radius:12px; background:#0d0818; cursor:pointer; }
+.booking-option input { margin:0; accent-color:var(--gold); width:18px; height:18px; }
+.booking-option .option-name { color:#f7efff; font-size:.95rem; }
+.booking-option .option-price { color:var(--gold); font-weight:700; letter-spacing:.04em; }
+.booking-option .option-detail { grid-column:2 / -1; color:#cdbde0; font-size:.82rem; line-height:1.45; }
+.booking-option:has(input:checked) { border-color:var(--gold); box-shadow:0 0 0 1px var(--gold) inset, 0 0 14px #ffd70033; }
+.booking-option:has(input:focus-visible) { outline:2px solid #efcdff; outline-offset:2px; }
+.booking-choices [aria-invalid="true"] { outline:1px solid #ff8f9e; }
